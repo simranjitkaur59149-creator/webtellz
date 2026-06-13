@@ -1,0 +1,462 @@
+/* ===========================
+   HERO SECTION
+=========================== */
+
+.services-hero {
+  position: relative;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 8%;
+
+  background: url("https://faraitltd.com/wp-content/uploads/2023/02/Screenshot_7.jpg")
+    center center/cover no-repeat;
+background-attachment: fixed;
+  overflow: hidden;
+  /* border-bottom-right-radius: 20%; */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 6, 23, 0.95) 0%,
+      rgba(2, 6, 23, 0.85) 45%,
+      rgba(2, 6, 23, 0.4) 100%
+    );
+
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 750px;
+
+  color: #fff;
+
+  animation: fadeUp 2.8s ease;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(15px);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 25px;
+
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+
+  line-height: 1.1;
+
+  font-weight: 800;
+
+  margin-bottom: 24px;
+}
+
+.hero-title span {
+  display: block;
+
+  background: linear-gradient(
+    135deg,
+    #60a5fa,
+    #818cf8,
+    #22d3ee
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  max-width: 620px;
+
+  font-size: 1.15rem;
+
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  margin-bottom: 40px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 50px;
+}
+
+.primary-btn {
+  padding: 16px 34px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #4f46e5
+  );
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+
+  box-shadow:
+    0 10px 30px rgba(37, 99, 235, 0.35);
+}
+
+.primary-btn:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 40px rgba(37, 99, 235, 0.45);
+}
+
+.secondary-btn {
+  padding: 16px 34px;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background: rgba(255,255,255,0.06);
+
+  backdrop-filter: blur(12px);
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+}
+
+.secondary-btn:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-4px);
+}
+
+.hero-card-icons {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 18px 25px;
+
+  border-radius: 22px;
+
+  background: rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.2);
+
+  animation: float 4s ease-in-out infinite;
+}
+
+.icon-box {
+  width: 100px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.08);
+}
+
+.hero-card-icons h3 {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.hero-card-icons span {
+  color: rgba(255,255,255,0.75);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-hero {
+    min-height: 90vh;
+    padding: 120px 20px 60px;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+}
+/* ===========================
+   SERVICES
+=========================== */
+
+.services-section {
+  
+/* background: url("../assets/bg2.jpg");
+background-repeat: no-repeat;
+background-size: cover; */
+  /* max-width: 1250px;
+  margin: auto; */
+/* 
+border-top-left-radius: 10%;
+border-top-right-radius: 10%; */
+
+  padding: 120px 20px;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.services-tag {
+  display: inline-block;
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.services-title {
+  margin-top: 20px;
+
+  font-size: clamp(2.5rem, 5vw, 4rem);
+
+  font-weight: 800;
+
+  color: #0f172a;
+}
+
+.services-title span {
+display: block;
+
+  background: linear-gradient(
+    135deg,
+    #60a5fa,
+    #818cf8,
+    #22d3ee
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+.services-subtitle {
+  max-width: 700px;
+  margin: 20px auto 0;
+
+  color: #64748b;
+
+  line-height: 1.8;
+}
+
+/* GRID */
+
+.services-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+
+  gap: 30px;
+}
+
+.service-card {
+  position: relative;
+
+  padding: 40px;
+
+  border-radius: 24px;
+
+  background :rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+
+  border: 1px solid #eef2f7;
+
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
+
+  transition: 0.4s;
+
+  animation: fadeUp 0.8s ease both;
+}
+
+.service-card:hover {
+  transform: translateY(-12px);
+
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
+}
+
+.service-number {
+  position: absolute;
+
+  top: 20px;
+  right: 25px;
+
+  font-size: 4rem;
+
+  font-weight: 800;
+
+  color: rgba(4, 73, 235, 0.6);
+}
+
+.service-icon-wrapper {
+  width: 75px;
+  height: 75px;
+
+  border-radius: 20px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+
+  margin-bottom: 25px;
+
+  transition: 0.4s;
+}
+
+.service-card:hover .service-icon-wrapper {
+  background: #2563eb;
+  color: white;
+
+  transform: rotate(-8deg);
+}
+
+.service-card-title {
+  font-size: 1.4rem;
+  color: #2563eb;
+  font-weight: 700;
+
+  margin-bottom: 15px;
+}
+
+.service-card-description {
+  /* color:white; */
+
+  line-height: 1.8;
+
+  margin-bottom: 25px;
+}
+
+.service-footer {
+  display: flex;
+  justify-content: space-between;
+
+  /* color: #2563eb; */
+
+  font-weight: 600;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .hero-stats {
+    flex-direction: column;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+}
