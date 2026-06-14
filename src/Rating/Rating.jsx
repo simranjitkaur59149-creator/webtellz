@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./rating.css";
 import { Star } from "lucide-react";
-export default function Rating({reviews,setReviews}) {
+import { RatingContext } from "../RatingContext.jsx";
+export default function Rating() {
+  const {addReview}=useContext(RatingContext)
   const [rating, setRating] = useState(0);
   const [comment,setComment]=useState("")
   // const [reviews,setReviews]=useState([])
@@ -9,18 +11,18 @@ export default function Rating({reviews,setReviews}) {
   const handleRating = (value) => {
     setRating(value);
   };
-  const addReview = (e) => {
-    setComment(e.target.value)
-    console.log(e.target.value)
-  };
+  // const addReview = (e) => {
+    // setComment(e.target.value)
+  //   console.log(e.target.value)
+  // };
   const handleSubmit=(e)=>{
     e.preventDefault()
     const newReview={
       rating,comment
     }
-    
-    setReviews([...reviews,newReview])
-    setRating()
+    addReview(newReview)
+    // setReviews([...reviews,newReview])
+    setRating(0)
 setComment("")
 
 
@@ -45,8 +47,9 @@ setComment("")
             id="comment"
             value={comment}
             placeholder="Add your Review"
-            on
-            onChange={addReview}
+          
+            onChange={(e)=>    setComment(e.target.value)
+}
             required
           />
           <div>
@@ -55,7 +58,7 @@ setComment("")
           </div>
         </form>
       </section>
-<Rating reviews={reviews}/>
+{/* <Rating reviews={reviews}/> */}
     </>
   );
 }

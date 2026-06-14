@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./about.css";
 import simran from "../assets/simranjitkaur.jpeg";
+import { useContext } from "react";
+import { RatingContext } from "../RatingContext";
 
 const ABOUT_DATA = {
   description:
@@ -78,7 +80,8 @@ const ImageShowcase = ({ experienceData, imageSrc }) => (
   </div>
 );
 
-export default function AboutWebtellz({reviews=[]}) {
+export default function AboutWebtellz() {
+  const{reviews}=useContext(RatingContext)
   const { description, features, metrics } = ABOUT_DATA;
 
   const experienceMetric = metrics.find(
@@ -175,12 +178,24 @@ export default function AboutWebtellz({reviews=[]}) {
           </motion.div>
         ))}
       </motion.div>
-    </section>
-    {reviews.map((item,index)=>{
-    return <section key={index}>
-{item.comment}
-    </section>
-})}
+    </section >
+
+    <section className="reviews-card">
+      <h1>What our client say</h1>
+  {reviews.map((item, index) => {
+    return (
+      <div key={index}>
+        <div className="review-rating">
+          {"⭐".repeat(item.rating)}
+        </div>
+
+        <div className="review-comment">
+          {item.comment}
+        </div>
+      </div>
+    );
+  })}
+</section>
     </>
   );
 }
