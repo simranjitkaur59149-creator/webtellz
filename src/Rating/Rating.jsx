@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./rating.css";
 import { Star } from "lucide-react";
 import { RatingContext } from "../RatingContext.jsx";
+import { toast, ToastContainer } from "react-toastify";
 export default function Rating() {
   const {addReview}=useContext(RatingContext)
   const [rating, setRating] = useState(0);
@@ -17,11 +18,17 @@ export default function Rating() {
   // };
   const handleSubmit=(e)=>{
     e.preventDefault()
+    if(rating===0 || comment===""){
+      toast.error("Please rate us ")
+      return;
+
+    }
+
     const newReview={
       rating,comment
     }
     addReview(newReview)
-    // setReviews([...reviews,newReview])
+     toast.success("Thank you for your review!");
     setRating(0)
 setComment("")
 
@@ -53,12 +60,13 @@ setComment("")
             required
           />
           <div>
-            {/* <button>Add Comment</button>  */}
-            <button type="submit">Submit</button>
+     
+            <button style={{background:"linear-gradient(135deg, #60a5fa, #818cf8, #22d3ee)",color:"white"}} type="submit">Submit</button>
           </div>
         </form>
       </section>
-{/* <Rating reviews={reviews}/> */}
+      <ToastContainer/>
+
     </>
   );
 }

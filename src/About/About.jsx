@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import "./about.css";
+import img1 from "../assets/about-slidder1.png";
+import img2 from "../assets/about-slidder2.png";
+import img3 from "../assets/about-slidder3.png";
 import simran from "../assets/simranjitkaur.jpeg";
-import { useContext } from "react";
 import { RatingContext } from "../RatingContext";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const ABOUT_DATA = {
   description:
     "At Webtellz, we combine creativity, technology, and strategy to build digital experiences that connect, engage, and convert.",
-
   features: [
     "Creative & Modern Designs",
     "Performance Focused",
     "Client-Centric Approach",
     "Innovative Solutions",
   ],
-
   metrics: [
     { id: "exp", value: "5+", label: "Years of Experience" },
     { id: "proj", value: "250+", label: "Projects Delivered" },
@@ -26,34 +33,25 @@ const ABOUT_DATA = {
 };
 
 const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 50,
-  },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.7, ease: "easeOut" },
   },
 };
 
 const stagger = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
+// Removed <li> from here so motion can handle the tag wrapper safely
 const FeatureItem = ({ text }) => (
-  <li className="feature-item">
+  <>
     <span className="checkmark-icon">✓</span>
     {text}
-  </li>
+  </>
 );
 
 const MetricCard = ({ value, label }) => (
@@ -66,136 +64,130 @@ const MetricCard = ({ value, label }) => (
 const ImageShowcase = ({ experienceData, imageSrc }) => (
   <div className="image-wrapper">
     <div className="about-image-container">
-      <img
-        src={imageSrc}
-        alt="Webtellz Team"
-        className="about-main-image"
-      />
+      <img src={imageSrc} alt="Webtellz Team" className="about-main-image" />
     </div>
-
-    <div className="experience-badge">
-      <span className="badge-value">{experienceData.value}</span>
-      <span className="badge-label">{experienceData.label}</span>
-    </div>
+    {experienceData && (
+      <div className="experience-badge">
+        <span className="badge-value">{experienceData.value}</span>
+        <span className="badge-label">{experienceData.label}</span>
+      </div>
+    )}
   </div>
 );
 
 export default function AboutWebtellz() {
-  const{reviews}=useContext(RatingContext)
+  // Safe fallback to empty array if context isn't loaded yet
+  const contextData = useContext(RatingContext);
+  const reviews = contextData?.reviews || [];
+
   const { description, features, metrics } = ABOUT_DATA;
-
-  const experienceMetric = metrics.find(
-    (item) => item.id === "exp"
-  );
-
-  const gridMetrics = metrics.filter(
-    (item) => item.id !== "exp"
-  );
+  const experienceMetric = metrics.find((item) => item.id === "exp");
+  const gridMetrics = metrics.filter((item) => item.id !== "exp");
 
   return (
     <>
-    <section className="about-section">
-      <div className="about-bg-shape"></div>
-
-      <div className="about-grid">
-        {/* Image Side */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
+      {/* Banner Carousel */}
+      <section className="about-banner">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
         >
-          <ImageShowcase
-            experienceData={experienceMetric}
-            imageSrc={simran}
-          />
-        </motion.div>
+          <SwiperSlide>
+            <img src={img1} alt="Slider 1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={img2} alt="Slider 2" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={img3} alt="Slider 3" />
+          </SwiperSlide>
+        </Swiper>
+      </section>
 
-        {/* Content Side */}
-        <motion.div
-          className="content-panel"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger}
-        >
-          <motion.h2
-            variants={fadeUp}
-            className="about-heading"
-          >
-            We Turn Ideas Into{" "}
-            <span className="highlight-text">
-              Meaningful Digital Solutions
-            </span>
-          </motion.h2>
+      {/* Main Content */}
+      <section className="about-section">
+        <div className="about-bg-shape"></div>
 
-          <motion.p
-            variants={fadeUp}
-            className="about-description"
-          >
-            {description}
-          </motion.p>
-
-          <motion.ul
-            variants={stagger}
-            className="feature-list"
-          >
-            {features.map((feature, index) => (
-              <motion.div
-                variants={fadeUp}
-                key={index}
-              >
-                <FeatureItem text={feature} />
-              </motion.div>
-            ))}
-          </motion.ul>
-        </motion.div>
-      </div>
-
-      {/* Stats */}
-      <motion.div
-        className="stats-grid"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        {gridMetrics.map((metric) => (
+        <div className="about-grid">
+          {/* Image Side */}
           <motion.div
-            key={metric.id}
-            whileHover={{
-              y: -8,
-              scale: 1.05,
-            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
           >
-            <MetricCard
-              value={metric.value}
-              label={metric.label}
-            />
+            <ImageShowcase experienceData={experienceMetric} imageSrc={simran} />
           </motion.div>
-        ))}
-      </motion.div>
-    </section >
 
-    <section className="reviews-card">
-      <h1>What our client say</h1>
-  {reviews.map((item, index) => {
-    return (
-      <div key={index}>
-        <div className="review-rating">
-          {"⭐".repeat(item.rating)}
+          {/* Content Side */}
+          <motion.div
+            className="content-panel"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+          >
+            <motion.h2 variants={fadeUp} className="about-heading">
+              We Turn Ideas Into{" "}
+              <span className="highlight-text">Meaningful Digital Solutions</span>
+            </motion.h2>
+
+            <motion.p variants={fadeUp} className="about-description">
+              {description}
+            </motion.p>
+
+            {/* Changed wrappers here to motion.li for valid HTML structure */}
+            <motion.ul variants={stagger} className="feature-list">
+              {features.map((feature, index) => (
+                <motion.li variants={fadeUp} key={index} className="feature-item">
+                  <FeatureItem text={feature} />
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
         </div>
 
-        <div className="review-comment">
-          {item.comment}
-        </div>
-      </div>
-    );
-  })}
-</section>
+        {/* Stats */}
+        <motion.div
+          className="stats-grid"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          {gridMetrics.map((metric) => (
+            <motion.div key={metric.id} whileHover={{ y: -8, scale: 1.05 }}>
+              <MetricCard value={metric.value} label={metric.label} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* Reviews Carousel */}
+      <section className="reviews-card">
+        <h1>What our clients say</h1>
+        {reviews.length === 0 ? (
+          <div>Waiting for your review </div>
+        ) : (
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+          >
+            {reviews.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="review-rating">{"⭐".repeat(item.rating || 5)}</div>
+                <div className="review-comment">{item.comment}</div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
+      </section>
     </>
   );
 }
