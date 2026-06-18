@@ -6,17 +6,18 @@ form
   justify-content: center;
   gap: 20px;
 }
-textarea
+textarea,input
 {
     width: 50%;
     height: 100px;
+     padding: 1rem;
 }
 .rating-sec
 {
     width: 100%;
-    margin: 0px auto;
+    margin-top: 50px;
     padding: 50px;
-    /* background-color: black;
-    color: white; */
+    background-color: black;
+    color: white;
 }
 

@@ -7,6 +7,7 @@ export default function Rating() {
   const {addReview}=useContext(RatingContext)
   const [rating, setRating] = useState(0);
   const [comment,setComment]=useState("")
+  const [user,setUser]=useState("")
   // const [reviews,setReviews]=useState([])
 
   const handleRating = (value) => {
@@ -18,18 +19,19 @@ export default function Rating() {
   // };
   const handleSubmit=(e)=>{
     e.preventDefault()
-    if(rating===0 || comment===""){
+    if(rating===0 || comment==="" ||user===""){
       toast.error("Please rate us ")
       return;
 
     }
 
     const newReview={
-      rating,comment
+      rating,user,comment
     }
     addReview(newReview)
      toast.success("Thank you for your review!");
     setRating(0)
+setUser("")
 setComment("")
 
 
@@ -49,6 +51,7 @@ setComment("")
               />
             ))}
           </span>
+          <input type="text" name="user" id="user" value={user} onChange={(e)=>setUser(e.target.value)} placeholder="Your Name" required />
           <textarea
             name="comment"
             id="comment"
@@ -61,9 +64,11 @@ setComment("")
           />
           <div>
      
-            <button style={{background:"linear-gradient(135deg, #60a5fa, #818cf8, #22d3ee)",color:"white"}} type="submit">Submit</button>
+            <button  type="submit">Submit</button>
+            {/* style={{background:"linear-gradient(135deg, #60a5fa, #818cf8, #22d3ee)",color:"white"}} */}
           </div>
         </form>
+        
       </section>
       <ToastContainer/>
 

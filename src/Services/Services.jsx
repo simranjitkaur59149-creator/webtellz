@@ -7,55 +7,55 @@ import {
   FaShoppingCart,
   FaTools,
 } from "react-icons/fa";
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from "lucide-react";
 import "./services.css";
 
 import heroImage from "../assets/services-bg.jpg";
-
-const SERVICES_DATA = [
+const services = [
   {
-    id: 1,
+    id: "01",
     title: "Web Design",
-    description:
-      "Modern and visually stunning websites designed to build trust and strengthen your brand.",
+    desc: "Beautiful, responsive websites crafted to engage visitors, strengthen your brand identity, and drive business growth.",
     icon: <FaPalette />,
+    color: "#3B82F6",
   },
   {
-    id: 2,
+    id: "02",
     title: "Web Development",
-    description:
-      "Fast, secure and scalable web solutions built with modern technologies.",
+    desc: "High-performance web applications and scalable digital platforms built with modern technologies.",
     icon: <FaCode />,
+    color: "#22C55E",
   },
   {
-    id: 3,
+    id: "03",
     title: "UI/UX Design",
-    description:
-      "Exceptional user experiences focused on engagement and conversions.",
+    desc: "User-centered interfaces that combine aesthetics with usability to deliver memorable experiences.",
     icon: <FaPencilRuler />,
+    color: "#8B5CF6",
   },
   {
-    id: 4,
+    id: "04",
     title: "SEO & Marketing",
-    description:
-      "Increase visibility, traffic and business growth with strategic marketing.",
+    desc: "Increase visibility, traffic and business growth with strategic marketing.",
     icon: <FaChartLine />,
+    color: "#F59E0B",
   },
   {
-    id: 5,
+    id: "05",
     title: "E-Commerce",
-    description:
-      "Conversion-focused online stores built to maximize sales and customer retention.",
+    desc: "Conversion-focused online stores built to maximize sales and customer retention.",
     icon: <FaShoppingCart />,
+    color: "#38BDF8",
   },
   {
-    id: 6,
+    id: "06",
     title: "Maintenance",
-    description:
-      "Continuous support, monitoring and optimization for peak performance.",
+    desc: "Continuous support, monitoring and optimization for peak performance.",
     icon: <FaTools />,
+    color: "#EC4899",
   },
 ];
+
 
 export default function OurServices() {
   return (
@@ -65,12 +65,8 @@ export default function OurServices() {
       <section className="services-hero">
         <div className="hero-overlay"></div>
 
-      
-
         <div className="hero-content">
-          <span className="hero-badge">
-            PREMIUM DIGITAL SERVICES
-          </span>
+          <span className="hero-badge">PREMIUM DIGITAL SERVICES</span>
 
           <h1 className="hero-title">
             Building Digital Experiences
@@ -78,20 +74,15 @@ export default function OurServices() {
           </h1>
 
           <p className="hero-description">
-            We combine creativity, strategy and
-            technology to build websites and digital
-            solutions that help businesses attract,
-            engage and convert customers.
+            We combine creativity, strategy and technology to build websites and
+            digital solutions that help businesses attract, engage and convert
+            customers.
           </p>
 
           <div className="hero-buttons">
-            <button className="primary-btn">
-              What Clients Say
-            </button>
+            <button className="primary-btn">What Clients Say</button>
 
-            <button className="secondary-btn">
-              View Portfolio
-            </button>
+            <button className="secondary-btn">View Portfolio</button>
           </div>
 
           <div className="hero-stats">
@@ -106,9 +97,14 @@ export default function OurServices() {
             </div> */}
 
             <div className="hero-card-icons">
-              <div>  <ShieldCheck color="#06B6D4" fontSize="22px"/></div>
-             <div><h3>98%</h3>
-              <span>Satisfaction Rate</span></div> 
+              <div>
+                {" "}
+                <ShieldCheck color="#06B6D4" fontSize="22px" />
+              </div>
+              <div>
+                <h3>98%</h3>
+                <span>Satisfaction Rate</span>
+              </div>
             </div>
           </div>
         </div>
@@ -116,57 +112,42 @@ export default function OurServices() {
 
       {/* SERVICES */}
 
+      
+
       <section className="services-section">
-        <div className="services-header">
-          <span className="services-tag">
-            OUR EXPERTISE
-          </span>
+  <div className="services-header">
+    <span className="services-tag">OUR SERVICES</span>
+    <h2 className="services-title">
+      Solutions That Drive <span>Growth</span>
+    </h2>
+    <p className="services-subtitle">
+      Comprehensive digital services to help your business thrive in the modern world.
+    </p>
+  </div>
 
-          <h2 className="services-title">
-            Services Designed For
-            <span> Modern Businesses</span>
-          </h2>
+  <div className="services-grid">
+    {services.map((service) => (
+      <div
+        key={service.id}
+        className="service-card"
+        style={{ "--accent": service.color }}
+      >
+        <span className="service-number">{service.id}</span>
 
-          <p className="services-subtitle">
-            We provide complete digital solutions
-            that help businesses establish a strong
-            online presence and achieve sustainable
-            growth.
-          </p>
+        <div className="service-top">
+          <div className="service-icon">{service.icon}</div>
+
+          <div className="service-content">
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+          </div>
         </div>
 
-        <div className="services-grid">
-          {SERVICES_DATA.map((service, index) => (
-            <div
-              key={service.id}
-              className="service-card"
-              style={{
-                animationDelay: `${index * 0.15}s`,
-              }}
-            >
-              <div className="service-number">
-                {String(index + 1).padStart(2, "0")}
-              </div>
+        
+      </div>
+    ))}
+  </div>
 
-              <div className="service-icon-wrapper">
-                {service.icon}
-              </div>
-
-              <h3 className="service-card-title">
-                {service.title}
-              </h3>
-
-              <p className="service-card-description">
-                {service.description}
-              </p>
-
-              {/* <div className="service-footer">
-                <span>Learn More</span>
-                <span>→</span>
-              </div> */}
-            </div>
-          ))}
-        </div>
       </section>
     </>
   );

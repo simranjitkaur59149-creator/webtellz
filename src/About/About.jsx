@@ -25,9 +25,9 @@ const ABOUT_DATA = {
   ],
   metrics: [
     { id: "exp", value: "5+", label: "Years of Experience" },
-    { id: "proj", value: "250+", label: "Projects Delivered" },
-    { id: "clients", value: "120+", label: "Happy Clients" },
-    { id: "team", value: "10+", label: "Team Members" },
+    // { id: "proj", value: "250+", label: "Projects Delivered" },
+    // { id: "clients", value: "120+", label: "Happy Clients" },
+    { id: "team", value: "2+", label: "Team Members" },
     { id: "satisfaction", value: "98%", label: "Client Satisfaction" },
   ],
 };
@@ -167,27 +167,40 @@ export default function AboutWebtellz() {
       </section>
 
       {/* Reviews Carousel */}
-      <section className="reviews-card">
+      <div className="review-sec">
         <h1>What our clients say</h1>
+      <section className="reviews-card">
         {reviews.length === 0 ? (
           <div>Waiting for your review </div>
         ) : (
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={20}
+            spaceBetween={30}
             slidesPerView={1}
             pagination={{ clickable: true }}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
+            //  breakpoints={{
+            //   0: {
+            //     slidesPerView: 1,
+            //   },
+            //   768: {
+            //     slidesPerView: 2,
+            //   },
+            //   1024: {
+            //     slidesPerView: 3,
+            //   },
+            // }}
           >
             {reviews.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="review-rating">{"⭐".repeat(item.rating || 5)}</div>
+                <div>{item.user}</div>
                 <div className="review-comment">{item.comment}</div>
               </SwiperSlide>
             ))}
           </Swiper>
         )}
-      </section>
+      </section></div>
     </>
   );
 }

@@ -8,7 +8,15 @@ import {
   FaLaptopCode,
   FaPencilRuler,
   FaChartLine,
+  FaComments,
+  FaLightbulb,
+  FaCode,
+  FaRocket,
+  FaNodeJs,FaJs,FaCss3Alt,
+  FaHtml5
 } from "react-icons/fa";
+import { RiReactjsFill } from "react-icons/ri";
+import { SiMongodb } from "react-icons/si";
 import { GoArrowDown, GoArrowUp } from "react-icons/go";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -27,32 +35,54 @@ const projects = [
   {
     title: " Portfolio",
     image: img1,
-      des:
-      "A professional photographer portfolio with amazing ui/ux",
+    des: "A professional photographer portfolio with amazing ui/ux",
+    tech:<RiReactjsFill color="#61DAFB"/>
   },
   {
     title: "E-commerce ",
     image: img2,
-    des:
-      "A full-featured online store with product catalog and secure .",
-    
+    des: "A full-featured online store with product catalog and secure .",
+    tech:(<><RiReactjsFill color="#61DAFB"/><FaNodeJs  color= "#339933"/> <SiMongodb color= "#47A248"/></>)
   },
   {
     title: "Weather App",
     image: img3,
-     des:
-      "Real-time weather updates with location search and beautiful UI.",
+    des: "Real-time weather updates with location search and beautiful UI.",
+    tech:<FaJs color="#F7DF1E" />
   },
   {
     title: "Travel UI/UX",
     image: img4,
-     des:
-      "Modern travel landing page with stunning design and interactions."
+    des: "Modern travel landing page with stunning design and interactions.",
+    tech:(<><FaJs color="#F7DF1E"/> <FaHtml5 color= "#E34F26"/> <FaCss3Alt color= "#1572B6"/></>)
+  },
+];
+const steps = [
+  {
+    icon: <FaComments color=" #3b82f6"/>,
+    
+    title: "Discuss",
+    description: "We understand your goals and gather project requirements.",
+  },
+  {
+    icon: <FaLightbulb color="yellow" />,
+    title: "Plan",
+    description: "We create the structure, design strategy, and roadmap.",
+  },
+  {
+    icon: <FaCode color="purple"/>,
+    title: "Build",
+    description:
+      "We develop your website using modern technologies and best practices.",
+  },
+  {
+    icon: <FaRocket color="green"/>,
+    title: "Deliver",
+    description: "Testing, optimization, deployment, and final delivery.",
   },
 ];
 export default function Home() {
-  
-const navigate=useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const cards = document.querySelectorAll(".card");
 
@@ -60,14 +90,12 @@ const navigate=useNavigate()
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-
             // restart animation every time
             entry.target.classList.remove("show");
 
             setTimeout(() => {
               entry.target.classList.add("show");
             }, 5000);
-
           } else {
             entry.target.classList.remove("show");
           }
@@ -75,7 +103,7 @@ const navigate=useNavigate()
       },
       {
         threshold: 0.2,
-      }
+      },
     );
 
     cards.forEach((card) => observer.observe(card));
@@ -83,7 +111,6 @@ const navigate=useNavigate()
     return observer.disconnect();
   }, []);
 
- 
   const scrollToTop = () => {
     document.getElementById("banner").scrollIntoView({
       behavior: "smooth",
@@ -96,22 +123,19 @@ const navigate=useNavigate()
   };
   return (
     <>
-    
-<Helmet>
-  <title>
-    WebTellz | Web Design, Development & SEO Services
-  </title>
+      <Helmet>
+        <title>WebTellz | Web Design, Development & SEO Services</title>
 
-  <meta
-    name="description"
-    content="WebTellz provides professional web design, web development, UI/UX design and SEO services. Build fast, responsive and search-engine-optimized websites for your business."
-  />
+        <meta
+          name="description"
+          content="WebTellz provides professional web design, web development, UI/UX design and SEO services. Build fast, responsive and search-engine-optimized websites for your business."
+        />
 
-  <meta
-    name="keywords"
-    content="web design, web development, SEO services, responsive websites, UI UX design, React developer, business website"
-  />
-</Helmet>
+        <meta
+          name="keywords"
+          content="web design, web development, SEO services, responsive websites, UI UX design, React developer, business website"
+        />
+      </Helmet>
 
       <main id="banner" className="banner">
         <div className="banner-content">
@@ -122,24 +146,23 @@ const navigate=useNavigate()
   scalable, SEO-optimized websites and digital experiences that convert
   visitors into customers.
 </p> */}
-         <h5 style={{ color: "#F1FAEE" }}>
-  Web Design • Web Development • SEO Services
-</h5>
+          <h5 style={{ color: "#F1FAEE" }}>
+            Web Design • Web Development • SEO Services
+          </h5>
 
-<h1>
- Creative Web Solutions
-</h1>
+          <h1>Creative Web Solutions</h1>
 
-<p>
- WebTellz creates modern websites, intuitive UI/UX, and SEO-driven digital experiences that help businesses grow online.
-</p>
+          <p>
+            WebTellz creates modern websites, intuitive UI/UX, and SEO-driven
+            digital experiences that help businesses grow online.
+          </p>
           <div>
             {" "}
             <button className="red-button">
               {" "}
               Explore my work <FaArrowRightLong />
             </button>{" "}
-            <button onClick={()=>navigate("/contact")}>Get in touch</button>
+            <button onClick={() => navigate("/contact")}>Get in touch</button>
           </div>
         </div>
       </main>
@@ -149,7 +172,6 @@ const navigate=useNavigate()
       <section className="services-sec  ">
         <div className="services-header">
           {" "}
-
           <h5 className="badge">What I Do</h5>
           <h1>Services I Offer</h1>
           <p>
@@ -159,7 +181,9 @@ const navigate=useNavigate()
         </div>
         <div className="card-sec ">
           <div className="card red">
-            <div><FaPaintBrush className="card-icons red-icon" /></div>
+            <div>
+              <FaPaintBrush className="card-icons red-icon" />
+            </div>
             <div>
               {" "}
               <h4>Web Design</h4>
@@ -182,7 +206,6 @@ const navigate=useNavigate()
             </div>
           </div>
           <div className="card purple">
-
             <FaPencilRuler className="card-icons purple-icon " />
             <div>
               <h4>UI/UX Design</h4>
@@ -207,12 +230,12 @@ const navigate=useNavigate()
         </div>
       </section>
       <section id="project-sec" className="container">
-  <div className="project-secttion">
+        <div className="project-secttion">
           <div className="project-header">
-          <span className="badge">★ FEATURED WORK</span>
-           <p>A showcase of my recent work and creative solutions</p>
-          <h2>Featured Projects</h2>
-</div>
+            <span className="badge">★ FEATURED WORK</span>
+            <p>A showcase of my recent work and creative solutions</p>
+            <h2>Featured Projects</h2>
+          </div>
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={20}
@@ -235,32 +258,70 @@ const navigate=useNavigate()
               },
             }}
           >
-           
             {projects.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="project-card">
-                  <div className="project-img">
-                    <img src={item.image} alt={item.title} />
-                  </div>
+  <div className="project-img">
+    <img src={item.image} alt={item.title} />
+{/* <span>Ecommerce</span> */}
+    <div className="project-overlay">
+      {/* <span>React</span>
+      <span>UI/UX</span> */}
+    </div>
+  </div>
 
-                  <div className="project-content">
-                    <h3>{item.title}</h3>
-                    <p>{item.des}</p>
-                  </div>
-                </div>
+  <div className="project-content">
+    <h3>{item.title}</h3>
+    <p>{item.des}</p>
+  <div>{item.tech}
+    <div className="project-footer">
+   </div> <span>Live Demo <FaArrowRightLong /></span>
+      {/* <button>Github</button> */}
+    </div>
+  </div>
+</div>
               </SwiperSlide>
             ))}
           </Swiper>
-
-          <div className="button-wrapper">
-        <button className="all-projects-btn">
-          View All Projects →
-        </button>
-      </div>
+{/* 
+          <div className="button-wrapper ">
+            <button className="all-projects-btn">View All Projects →</button>{" "}
+            <button className="icons" onClick={scrollToTop}>
+              <GoArrowUp />
+            </button>
+          </div> */}
         </div>
       </section>
-      <Rating/>
-      <div style={{display:"flex",justifyContent:"flex-end"}}><GoArrowUp className="icons" onClick={scrollToTop} /></div>
+
+      <section className="how-work-section">
+        <div className="container">
+          <span className="section-tag">How I Work</span>
+
+          <h2 className="section-title">My Development Process</h2>
+
+          <p className="section-subtitle">
+            A simple and transparent process to turn your ideas into a
+            successful digital product.
+          </p>
+          <div className="process-grid">
+            {steps.map((process, index) => (
+              <div className="process-card" key={index}>
+                <div className="icon-box ">{process.icon}
+                  
+                </div>
+
+                <h3>{process.title}</h3>
+
+                <p>{process.description}</p>
+
+                {index !== steps.length - 1 && <div className="arrow">→</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Rating />
     </>
   );
 }
