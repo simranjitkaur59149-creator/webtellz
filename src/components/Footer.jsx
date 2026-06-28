@@ -1,60 +1,82 @@
 import React from "react";
 import "./footer.css";
 import logo from "../assets/logo.png";
-import { FaGithub } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { SlSocialInstagram } from "react-icons/sl";
-import { FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <>
-      <footer className="footer-links">
-        <ul>
-          <li>
-           
-            <img src={logo} alt="" width={300} />
-          </li>
-          <li>
-            <p>
-              We build your ideas into reality which hepls to grow your business
-            </p>
-          </li>
-          <li>
-            <figure className="social-media">
-             
-              <Link to="https://www.instagram.com/webtellz?igsh=MWNtNGJxNnRoZ3U3aw==">
-            
-                <SlSocialInstagram />
-              </Link>
-              <Link to="#">
-              
-                <FaGithub />
-              </Link>
-              <Link to="#">
-           
-                <FaLinkedinIn />
-              </Link>
-            </figure>
-          </li>
-        </ul>
-        <ul>
-          <h3>Quick Links</h3>
-          <li><Link>Home</Link></li>
-          <li><Link>About </Link> </li>
-          <li><Link>Services</Link></li>
-          <li><Link> Portfolio </Link></li>
-          <li><Link> Contact</Link> </li>
-        </ul>
-        <ul>
-          <h3>Services</h3>
-          <li>Web Design</li>
-          <li>Web development</li>
-          <li>UI/UX Design</li>
-          <li>E-commerce</li>
-          <li>Maintenance</li>
-        </ul>
-      </footer>
-    </>
+    <footer className="footer">
+ <div className="footer-links">
+
+  {/* Company */}
+  <div className="footer-column company">
+    <img src={logo} alt="logo" className="footer-logo" />
+
+    <p className="footer-text">
+      We build innovative digital solutions that transform your ideas into
+      reality and help your business grow.
+    </p>
+
+    <div className="social-media">
+      <a href="#"><SlSocialInstagram /></a>
+      <a href="#"><FaGithub /></a>
+      <a href="#"><FaLinkedinIn /></a>
+    </div>
+  </div>
+
+  {/* Links */}
+  <div className="footer-column links">
+    <h3>Quick Links</h3>
+
+    <Link to="/">Home</Link>
+    <Link to="/about">About</Link>
+    <Link to="/portfolio">Portfolio</Link>
+    <Link to="/contact">Contact</Link>
+  </div>
+
+  {/* Services */}
+  <div className="footer-column services">
+    <h3>Services</h3>
+
+    <span>Web Design</span>
+    <span>Web Development</span>
+    <span>UI/UX Design</span>
+    <span>E-commerce Solutions</span>
+    <span>Website Maintenance</span>
+  </div>
+
+  {/* Contact */}
+  <div className="footer-column contact">
+
+    <h3>Contact Info</h3>
+
+    <div className="contact-item">
+      <MdEmail className="contact-icon email"/>
+      <div>
+        <h4>Email</h4>
+        <p>simranjitkaur59149@gmail.com</p>
+      </div>
+    </div>
+
+    <div className="contact-item">
+      <FaLocationDot className="contact-icon location"/>
+      <div>
+        <h4>Location</h4>
+        <p>Patiala, Punjab</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div className="footer-bottom">
+  © {new Date().getFullYear()} <span>WebTellz.</span> All rights reserved.
+</div>
+    </footer>
   );
 }

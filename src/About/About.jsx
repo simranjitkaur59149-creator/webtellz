@@ -5,7 +5,10 @@ import img1 from "../assets/about-slidder1.png";
 import img2 from "../assets/about-slidder2.png";
 import img3 from "../assets/about-slidder3.png";
 import simran from "../assets/simranjitkaur.jpeg";
-import { RatingContext } from "../RatingContext";
+
+import Rating from "../Rating/Rating";
+
+
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -77,8 +80,7 @@ const ImageShowcase = ({ experienceData, imageSrc }) => (
 
 export default function AboutWebtellz() {
   // Safe fallback to empty array if context isn't loaded yet
-  const contextData = useContext(RatingContext);
-  const reviews = contextData?.reviews || [];
+
 
   const { description, features, metrics } = ABOUT_DATA;
   const experienceMetric = metrics.find((item) => item.id === "exp");
@@ -88,24 +90,28 @@ export default function AboutWebtellz() {
     <>
       {/* Banner Carousel */}
       <section className="about-banner">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={20}
-          slidesPerView={1}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-        >
-          <SwiperSlide>
-            <img src={img1} alt="Slider 1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={img2} alt="Slider 2" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={img3} alt="Slider 3" />
-          </SwiperSlide>
-        </Swiper>
-      </section>
+  <Swiper
+    modules={[Navigation, Pagination, Autoplay]}
+    spaceBetween={0}
+    slidesPerView={1}
+    pagination={{ clickable: true }}
+    
+    autoplay={{ delay: 4000, disableOnInteraction: false }}
+    loop={true}
+  >
+    <SwiperSlide>
+      <img src={img1} alt="Digital Solutions" />
+    </SwiperSlide>
+
+    <SwiperSlide>
+      <img src={img2} alt="Web Development" />
+    </SwiperSlide>
+
+    <SwiperSlide>
+      <img src={img3} alt="Technology Services" />
+    </SwiperSlide>
+  </Swiper>
+</section>
 
       {/* Main Content */}
       <section className="about-section">
@@ -165,42 +171,8 @@ export default function AboutWebtellz() {
           ))}
         </motion.div>
       </section>
-
-      {/* Reviews Carousel */}
-      <div className="review-sec">
-        <h1>What our clients say</h1>
-      <section className="reviews-card">
-        {reviews.length === 0 ? (
-          <div>Waiting for your review </div>
-        ) : (
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={30}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            //  breakpoints={{
-            //   0: {
-            //     slidesPerView: 1,
-            //   },
-            //   768: {
-            //     slidesPerView: 2,
-            //   },
-            //   1024: {
-            //     slidesPerView: 3,
-            //   },
-            // }}
-          >
-            {reviews.map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="review-rating">{"⭐".repeat(item.rating || 5)}</div>
-                <div>{item.user}</div>
-                <div className="review-comment">{item.comment}</div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-      </section></div>
+<Rating/>
+   
     </>
   );
 }
