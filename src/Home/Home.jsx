@@ -169,6 +169,26 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+
+    useEffect(() => {
+    const elements = document.querySelectorAll(".animate");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  });
+
   // Typing Effect Logic
   useEffect(() => {
     const currentRole = roles[roleIndex];
@@ -269,7 +289,7 @@ export default function Home() {
           </p>
           <div className="process-grid">
             {steps.map((process, index) => (
-              <div className="process-card" key={index}>
+              <div className="process-card animate slide-right delay-1" key={index}>
                 <div className="icon-box">{process.icon}</div>
                 <h3>{process.title}</h3>
                 <p>{process.description}</p>
@@ -321,7 +341,7 @@ Featured <span>Projects</span>
           >
             {projects.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="project-card">
+                <div className="project-card animate slide-left delay-2">
                   <div className="project-img">
                     <img src={item.image} alt={item.title} />
                     <div className="project-overlay">
@@ -388,7 +408,7 @@ Featured <span>Projects</span>
 
           <SwiperSlide key={index}>
 
-            <div className="review-card">
+            <div className="review-card animate slide-up delay-3">
 
               <div className="review-inner">
 
