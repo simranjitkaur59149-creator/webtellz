@@ -32,10 +32,10 @@ import { SiMongodb } from "react-icons/si";
 import "./home.css";
 import bannerbg from "../assets/b_Style__Ultra_realist.mp4";
 import unknown from "../assets/unknown.jpg";
-import img1 from "../assets/project1.jpg";
-import img2 from "../assets/project2.png";
+import img1 from "../assets/project-1.png";
+import img2 from "../assets/project-2.png";
 import img3 from "../assets/project3.png";
-import img4 from "../assets/project4.png";
+import img4 from "../assets/project-4.png";
 import { text, title } from "framer-motion/client";
 import { color } from "framer-motion";
 
@@ -260,9 +260,7 @@ export default function Home() {
             ))}
           </div> */}
         </div>
-        <video loop playsInline autoPlay muted className="banner-video">
-          <source src={bannerbg} type="video/mp4" />
-        </video>
+      
       </main>
 
           <div className="service-features">

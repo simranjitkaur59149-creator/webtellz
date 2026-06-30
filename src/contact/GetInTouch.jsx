@@ -1,155 +1,181 @@
-import React, { useState } from "react";
-import "./contact.css"
-import { MdEmail } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import "./contact.css";
+
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+
 import { SlSocialInstagram } from "react-icons/sl";
-import { FaLinkedinIn } from "react-icons/fa";
+
+import { MdEmail, MdOutlineArrowOutward } from "react-icons/md";
+
+import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
+
 export default function GetInTouch() {
-    const [result, setResult] = useState("");
+    useEffect(() => {
+      const elements = document.querySelectorAll(".animate");
+  
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+  
+      elements.forEach((el) => observer.observe(el));
+  
+      return () => observer.disconnect();
+    });
+  const [result, setResult] = useState("");
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  setResult("Sending...");
+    setResult("Sending...");
 
-  const formData = new FormData(event.target);
+    const formData = new FormData(e.target);
 
-  formData.append(
-    "access_key",
-    "c399dd3b-22b2-4f08-9fd8-f617d4e73051"
-  );
+    formData.append("access_key", "c399dd3b-22b2-4f08-9fd8-f617d4e73051");
 
-  const response = await fetch(
-    "https://api.web3forms.com/submit",
-    {
+    const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Message sent successfully!");
+      e.target.reset();
+    } else {
+      setResult("Failed to send message.");
     }
-  );
+  };
 
-  const data = await response.json();
-
-  if (data.success) {
-    setResult("Message sent successfully!");
-    event.target.reset();
-  } else {
-    setResult("Failed to send message.");
-  }
-};
   return (
-    <>
-      <section className="contact-sec">
-        <div className="contact-container">
-        <div className="contact-details">
-        <h1>Get In Touch</h1>
-        <h4>Let's Work Together</h4>
-        <p>
-          Have a project in mind? We'd love to hear about it. Send us a message
-          and we'll get back to you soon{" "}
-        </p>
-        <ul>
-          <li>
-            <MdEmail style={{color:" #e63946",fontSize:"24px"}}/>
-            <span>
-              <b>Email</b> <div>simranjitkaur59149@gmail.com</div>
-            </span>
-          </li>
-          <li>
-            <FaLocationDot style={{color:" #e63946",fontSize:"24px"}} />
-            <span>
-              <b>Location</b> <div>Patiala,Punjab</div>
-            </span>
-          </li>
-        </ul>
-       <h5>Follow us</h5> 
-       <figure >
-             
-              <Link to="https://www.instagram.com/webtellz?igsh=MWNtNGJxNnRoZ3U3aw==">
-            
-                <SlSocialInstagram />
-              </Link>
-              <Link to="#">
-              
-                <FaGithub />
-              </Link>
-              <Link to="#">
-           
-                <FaLinkedinIn />
-              </Link>
-            </figure></div>
-            <div className="contact-form">
-<form onSubmit={handleSubmit}>
+    <section className="contact">
+      {/* Glow Background */}
 
-    <div className="input-group">
-<input
-  type="hidden"
-  name="from_name"
-  value="Portfolio Contact Form"
-/>
-      <label htmlFor="name">Your Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="John Doe"
-        required
-      />
-    </div>
+      <div className="blur blur1"></div>
+      <div className="blur blur2"></div>
 
-    <div className="input-group">
-      <label htmlFor="email">Your Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="john@example.com"
-        required
-      />
-    </div>
+      <div className="contact-wrapper">
+        {/* LEFT */}
 
-    <div className="input-group">
-      <label htmlFor="subject">Subject</label>
-      <input
-        type="text"
-        id="subject"
-        name="subject"
-        placeholder="Project Discussion"
-      />
-    </div>
+        <div className="contact-left">
+          <span className="contact-tag">Get In Touch</span>
 
-    <div className="input-group">
-      <label htmlFor="msg">Message</label>
-      <textarea
-        id="msg"
-        name="message"
-        rows="6"
-        placeholder="Tell me about your project..."
-      ></textarea>
-    </div>
+          <h3>
+            Let's Build
+            <span> Something Amazing</span>
+          </h3>
 
-    <button type="submit" className="submit-btn">
-  Send Message →
-</button>
+          <p>
+            Looking for a modern website or web application? I'm always excited
+            to collaborate on creative ideas and help businesses grow digitally.
+          </p>
 
-{result && (
-  <p
-    style={{
-      marginTop: "15px",
-      color: result.includes("success")
-        ? "green"
-        : "#e63946",
-    }}
-  >
-    {result}
-  </p>
-)}
+          <div className="info-card">
+            <div className="info-icon">
+              <MdEmail />
+            </div>
 
-  </form>
-</div></div>
-      </section>
-    </>
+            <div>
+              <h4>Email</h4>
+
+              <p>simranjitkaur59149@gmail.com</p>
+            </div>
+          </div>
+
+          <div className="info-card">
+            <div className="info-icon green">
+              <FaLocationDot />
+            </div>
+
+            <div>
+              <h4>Location</h4>
+
+              <p>Patiala, Punjab</p>
+            </div>
+          </div>
+
+          <div className="socials">
+            <Link to="/">
+              <SlSocialInstagram />
+            </Link>
+
+            <Link to="/">
+              <FaGithub />
+            </Link>
+
+            <Link to="/">
+              <FaLinkedinIn />
+           </Link>
+          </div>
+        </div>
+
+        {/* RIGHT */}
+
+        <div className="contact-right animate slide-right delay-1">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="hidden"
+              name="from_name"
+              value="Portfolio Contact Form"
+            />
+
+           <div className="form-header"> <span className="e-icon"> <MdEmail /></span>
+
+            <h4>Send us a Message</h4></div>
+
+            <div className="grid">
+              <div className="field">
+                <label>Name</label>
+
+                <input name="name" placeholder="John Doe" required />
+              </div>
+
+              <div className="field">
+                <label>Email</label>
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="john@gmail.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="field">
+              <label>Subject</label>
+
+              <input name="subject" placeholder="Project Discussion" />
+            </div>
+
+            <div className="field">
+              <label>Message</label>
+
+              <textarea
+                rows="7"
+                name="message"
+                placeholder="Tell me about your project..."
+              />
+            </div>
+
+            <button className="send-btn">
+              Send Message
+              <MdOutlineArrowOutward />
+            </button>
+
+            {result && <p className="result">{result}</p>}
+          </form>
+        </div>
+      </div>
+    </section>
   );
-}   
+}

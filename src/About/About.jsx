@@ -8,30 +8,57 @@ import simran from "../assets/simranjitkaur.jpeg";
 
 import Rating from "../Rating/Rating";
 
-
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import {
+  Brush,
+  CircleStar,
+  SproutIcon,
+  Timer,
+  User,
+  Users,
+} from "lucide-react";
+import { BiBulb } from "react-icons/bi";
+const aboutFeatures = [
+  {
+    icon: <Brush />,
+    title: "Creative & Modern Designs",
+    text: "Pixel perfect design for your brand.",
+  },
+  {
+    icon: <Timer />,
+    title: "Performance Focused",
+    text: "Pixel perfect design for your brand.",
+  },
+  {
+    icon: <User />,
+    title: "Client-Centric Approach",
+    text: "Pixel perfect design for your brand.",
+  },
+  {
+    icon: <BiBulb />,
+    title: "Innovative Solutions",
+    text: "Pixel perfect design for your brand.",
+  },
+];
 const ABOUT_DATA = {
   description:
     "At Webtellz, we combine creativity, technology, and strategy to build digital experiences that connect, engage, and convert.",
-  features: [
-    "Creative & Modern Designs",
-    "Performance Focused",
-    "Client-Centric Approach",
-    "Innovative Solutions",
-  ],
+
   metrics: [
     { id: "exp", value: "5+", label: "Years of Experience" },
-    // { id: "proj", value: "250+", label: "Projects Delivered" },
-    // { id: "clients", value: "120+", label: "Happy Clients" },
-    { id: "team", value: "2+", label: "Team Members" },
-    { id: "satisfaction", value: "98%", label: "Client Satisfaction" },
+
+    { icon: <Users />, id: "team", value: "2+", label: "Team Members" },
+    {
+      icon: <CircleStar />,
+      id: "satisfaction",
+      value: "98%",
+      label: "Client Satisfaction",
+    },
   ],
 };
 
@@ -69,20 +96,14 @@ const ImageShowcase = ({ experienceData, imageSrc }) => (
     <div className="about-image-container">
       <img src={imageSrc} alt="Webtellz Team" className="about-main-image" />
     </div>
-    {experienceData && (
-      <div className="experience-badge">
-        <span className="badge-value">{experienceData.value}</span>
-        <span className="badge-label">{experienceData.label}</span>
-      </div>
-    )}
+   
   </div>
 );
 
 export default function AboutWebtellz() {
   // Safe fallback to empty array if context isn't loaded yet
 
-
-  const { description, features, metrics } = ABOUT_DATA;
+  const { description, metrics } = ABOUT_DATA;
   const experienceMetric = metrics.find((item) => item.id === "exp");
   const gridMetrics = metrics.filter((item) => item.id !== "exp");
 
@@ -90,89 +111,92 @@ export default function AboutWebtellz() {
     <>
       {/* Banner Carousel */}
       <section className="about-banner">
-  <Swiper
-    modules={[Navigation, Pagination, Autoplay]}
-    spaceBetween={0}
-    slidesPerView={1}
-    pagination={{ clickable: true }}
-    
-    autoplay={{ delay: 4000, disableOnInteraction: false }}
-    loop={true}
-  >
-    <SwiperSlide>
-      <img src={img1} alt="Digital Solutions" />
-    </SwiperSlide>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={0}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          loop={true}
+        >
+          <SwiperSlide>
+            <img src={img1} alt="Digital Solutions" />
+          </SwiperSlide>
 
-    <SwiperSlide>
-      <img src={img2} alt="Web Development" />
-    </SwiperSlide>
+          <SwiperSlide>
+            <img src={img2} alt="Web Development" />
+          </SwiperSlide>
 
-    <SwiperSlide>
-      <img src={img3} alt="Technology Services" />
-    </SwiperSlide>
-  </Swiper>
-</section>
+          <SwiperSlide>
+            <img src={img3} alt="Technology Services" />
+          </SwiperSlide>
+        </Swiper>
+      </section>
 
       {/* Main Content */}
       <section className="about-section">
-        <div className="about-bg-shape"></div>
+        <div className="about-container">
+          {/* LEFT */}
+          <div className="about-image-card">
+            <img src={simran} className="about-main-image" />
+           
+          </div>
 
-        <div className="about-grid">
-          {/* Image Side */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <ImageShowcase experienceData={experienceMetric} imageSrc={simran} />
-          </motion.div>
+          {/* RIGHT */}
 
-          {/* Content Side */}
-          <motion.div
-            className="content-panel"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            <motion.h2 variants={fadeUp} className="about-heading">
-              We Turn Ideas Into{" "}
-              <span className="highlight-text">Meaningful Digital Solutions</span>
-            </motion.h2>
+          <div className=" about-tagline ">
+            <h3>
+              We Turn Ideas Into
+              <span> Meaningful Digital Solutions</span>
+            </h3>
 
-            <motion.p variants={fadeUp} className="about-description">
-              {description}
-            </motion.p>
+            <p>{description}</p>
 
-            {/* Changed wrappers here to motion.li for valid HTML structure */}
-            <motion.ul variants={stagger} className="feature-list">
-              {features.map((feature, index) => (
-                <motion.li variants={fadeUp} key={index} className="feature-item">
-                  <FeatureItem text={feature} />
-                </motion.li>
+            <div className="feature-grid">
+              {aboutFeatures.map((item) => (
+                <div className="feature-card">
+                  <div className="icon">{item.icon}</div>
+
+                  <div>
+                    <h5>{item.title}</h5>
+
+                    <p>{item.text}</p>
+                  </div>
+                </div>
               ))}
-            </motion.ul>
-          </motion.div>
+            </div>
+
+            {/* <div className="about-buttons">
+
+                <button className="primary-btn">
+                    Explore Work →
+                </button>
+
+                <button className="secondary-btn">
+                    ▶ Watch Story
+                </button>
+
+            </div> */}
+          </div>
         </div>
 
-        {/* Stats */}
-        <motion.div
-          className="stats-grid"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="stats-container">
           {gridMetrics.map((metric) => (
-            <motion.div key={metric.id} whileHover={{ y: -8, scale: 1.05 }}>
-              <MetricCard value={metric.value} label={metric.label} />
-            </motion.div>
+            <div className="stat-card">
+              <div className="stat-card-content">
+                {" "}
+                <div className="metric-icons">{metric.icon}</div>
+                <div>
+                  <h2>{metric.value}</h2>
+
+                  <p>{metric.label}</p>
+                </div>
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
-<Rating/>
-   
+      <Rating />
     </>
   );
 }

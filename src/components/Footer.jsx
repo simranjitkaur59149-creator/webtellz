@@ -5,7 +5,8 @@ import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { SlSocialInstagram } from "react-icons/sl";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -34,8 +35,14 @@ export default function Footer() {
 
     <Link to="/">Home</Link>
     <Link to="/about">About</Link>
-    <Link to="/portfolio">Portfolio</Link>
+    
     <Link to="/contact">Contact</Link>
+    <div className="footer-btn">
+            <NavLink to="/contact" >
+              Let's Talk
+              <ArrowRight size={18} />
+            </NavLink>
+          </div>
   </div>
 
   {/* Services */}
@@ -50,7 +57,7 @@ export default function Footer() {
   </div>
 
   {/* Contact */}
-  <div className="footer-column contact">
+  <div className="footer-column ">
 
     <h3>Contact Info</h3>
 
@@ -58,7 +65,7 @@ export default function Footer() {
       <MdEmail className="contact-icon email"/>
       <div>
         <h4>Email</h4>
-        <p>simranjitkaur59149@gmail.com</p>
+        <p>webtellz1226@gmail.com</p>
       </div>
     </div>
 

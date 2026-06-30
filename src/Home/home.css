@@ -147,6 +147,9 @@ button {
   position: absolute;
   inset: 0;
   background-image: url("../assets/banner-bg-mine.png");
+  /* background-image: url("../assets/banner-mine.png"); */
+  /* background-image: url("../assets/mine.png"); */
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index: 1;
