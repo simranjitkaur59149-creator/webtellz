@@ -23,9 +23,9 @@ export default function Footer() {
     </p>
 
     <div className="social-media">
-      <a href="#"><SlSocialInstagram /></a>
-      <a href="#"><FaGithub /></a>
-      <a href="#"><FaLinkedinIn /></a>
+      <Link to="https://www.instagram.com/webtellz?igsh=YTI2dGJ3c2FjZWI3"><SlSocialInstagram /></Link>
+      <Link to="https://github.com/simranjitkaur59149-creator"><FaGithub /></Link>
+      <Link to="https://www.linkedin.com/in/simranjit-kaur-55a67732a?utm_source=share_via&utm_content=profile&utm_medium=member_android"><FaLinkedinIn /></Link>
     </div>
   </div>
 

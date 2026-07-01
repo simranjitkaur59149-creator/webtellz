@@ -75,9 +75,10 @@ button {
 }
 
 .primary-button {
-  background: #09bc8a;
-  color: black;
-  box-shadow: 0 10px 25px rgba(230, 57, 70, 0.3);
+  /* border: #ff5b7d; */
+  background: #ff1654;
+  color:black;
+  box-shadow: 0 10px 25px #ff5b7d;
 }
 
 .primary-button:hover {
@@ -146,7 +147,7 @@ button {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../assets/banner-bg-mine.png");
+  background-image: url("../assets/banner-bg-mine.webp");
   /* background-image: url("../assets/banner-mine.png"); */
   /* background-image: url("../assets/mine.png"); */
   background-size: cover;
@@ -184,7 +185,8 @@ button {
 }
 
 .banner-content h1 span {
-  color: #09bc8a;
+  /* color: #09bc8a; */
+  color:#ff1654;
 }
 
 .banner-content p {
@@ -528,6 +530,7 @@ button {
   backdrop-filter: blur(12px);
   overflow-wrap: break-word;
   word-wrap: break-word;
+      border: 2px solid #ff1654;
 }
 
 .border-0 { border: 2px solid #3b82f6; }
@@ -671,16 +674,18 @@ button {
 .process-card:nth-child(4) { color: #EFFF3C; border: 2px solid #EFFF3C; }
 
 .process-card:hover {
-  transform: translateY(-10px);
+transform:
+  translateY(-10px);
 }
 
-.icon-box {
+.process-icon-box {
   margin: 0 auto 20px;
   border-radius: 20px;
   font-size: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: none;
 }
 
 .process-card p {

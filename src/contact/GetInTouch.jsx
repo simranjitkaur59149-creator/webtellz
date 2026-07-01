@@ -104,15 +104,16 @@ export default function GetInTouch() {
           </div>
 
           <div className="socials">
-            <Link to="/">
+            <Link to="https://www.instagram.com/webtellz?igsh=YTI2dGJ3c2FjZWI3">
               <SlSocialInstagram />
             </Link>
 
-            <Link to="/">
+            <Link to="https://github.com/simranjitkaur59149-creator">
               <FaGithub />
             </Link>
 
-            <Link to="/">
+                <Link to="https://www.linkedin.com/in/simranjit-kaur-55a67732a?utm_source=share_via&utm_content=profile&utm_medium=member_android">
+          
               <FaLinkedinIn />
            </Link>
           </div>

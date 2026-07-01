@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RatingContext } from "../RatingContext";
 
 // Swiper Components and Styles
@@ -32,10 +32,10 @@ import { SiMongodb } from "react-icons/si";
 import "./home.css";
 import bannerbg from "../assets/b_Style__Ultra_realist.mp4";
 import unknown from "../assets/unknown.jpg";
-import img1 from "../assets/project-1.png";
-import img2 from "../assets/project-2.png";
-import img3 from "../assets/project3.png";
-import img4 from "../assets/project-4.png";
+import img1 from "../assets/project-1.webp";
+import img2 from "../assets/project-2.webp";
+import img3 from "../assets/project3.webp";
+import img4 from "../assets/project-4.webp";
 import { text, title } from "framer-motion/client";
 import { color } from "framer-motion";
 
@@ -47,6 +47,7 @@ const projects = [
     des: "A professional photographer portfolio with amazing ui/ux",
     tech: <RiReactjsFill color="#61DAFB" />,
     type: "Portfolio Website",
+    web:"https://www.photographybymirza.in/photography"
   },
   {
     title: "E-commerce store",
@@ -60,6 +61,7 @@ const projects = [
       </>
     ),
     type: "E-Commerce",
+    web:"https://ecommercefronted-xi.vercel.app/"
   },
   {
     title: "Weather App",
@@ -67,6 +69,8 @@ const projects = [
     des: "Real-time weather updates with location search and beautiful UI.",
     tech: <FaJs color="#F7DF1E" />,
     type: "Web App",
+        web:"https://weatherweb-eosin.vercel.app/"
+
   },
   {
     title: "Travel UI/UX",
@@ -80,6 +84,8 @@ const projects = [
       </>
     ),
     type: "Website landing page",
+        web:"https://simranjitkaur59149-creator.github.io/travel./"
+
   },
 ];
 
@@ -150,6 +156,7 @@ export default function Home() {
   useEffect(() => {
     const cards = document.querySelectorAll(".card");
     const observer = new IntersectionObserver(
+
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -241,24 +248,12 @@ export default function Home() {
             digital experiences that help businesses grow online.
           </p>
           <div>
-            <button className="primary-button">
+            <button className="primary-button" onClick={()=>document.getElementById("review").scrollIntoView({behavior:"smooth"})}>
               Explore my work <FaArrowRightLong />
             </button>
             <button onClick={() => navigate("/contact")}>Get in touch</button>
           </div>
-{/* 
-          <div className="service-features">
-            {serviceFeatures.map((item, index) => (
-              <div className="service-features-card" key={index}>
-                <div className="feature-icon">{item.icon}</div>
 
-                <div className="feature-content">
-                  <h6>{item.title}</h6>
-                  <p>{item.text}</p>
-                </div>
-              </div>
-            ))}
-          </div> */}
         </div>
       
       </main>
@@ -288,7 +283,7 @@ export default function Home() {
           <div className="process-grid">
             {steps.map((process, index) => (
               <div className="process-card animate slide-right delay-1" key={index}>
-                <div className="icon-box">{process.icon}</div>
+                <div className="process-icon-box">{process.icon}</div>
                 <h3>{process.title}</h3>
                 <p>{process.description}</p>
                 {index !== steps.length - 1 && <div className="arrow ">→</div>}
@@ -316,12 +311,7 @@ A showcase of my recent work and creative solutions
 Featured <span>Projects</span>
 </h2>
 
-{/* <div className="title-bars">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</div> */}
+
 
 </div>
 
@@ -351,9 +341,9 @@ Featured <span>Projects</span>
                     <p>{item.des}</p>
                     <div className="project-footer">
                       <div className="tech-icons">{item.tech}</div>
-                      <span>
+                      <Link  to={item.web}>
                         Live Demo <FaArrowRightLong />
-                      </span>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -364,7 +354,7 @@ Featured <span>Projects</span>
       </section>
 
       {/* Reviews Section */}
-      <div className="review-section">
+      <div className="review-section" id="review">
 
   <div className="container">
 

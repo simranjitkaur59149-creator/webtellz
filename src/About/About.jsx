@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import "./about.css";
-import img1 from "../assets/about-slidder1.png";
-import img2 from "../assets/about-slidder2.png";
-import img3 from "../assets/about-slidder3.png";
-import simran from "../assets/simranjitkaur.jpeg";
+import img1 from "../assets/about-slidder1.webp";
+import img2 from "../assets/about-slidder2.webp";
+import img3 from "../assets/about-slidder3.webp";
+// import simran from "../assets/simranjitkaur.jpeg";
+import simran from "../assets/mine.jpeg";
 
 import Rating from "../Rating/Rating";
 
