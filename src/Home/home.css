@@ -131,9 +131,16 @@ button {
   padding: 8%;
   width: 100%;
   overflow: hidden;
+
+    /* background-image: url("../assets/banner-bg-mine.jpg"); */
+  background-image: url("../assets/banner-mine.png");
+  /* background-image: url("../assets/mine.png"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.banner-video {
+/* .banner-video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -148,13 +155,12 @@ button {
   position: absolute;
   inset: 0;
   background-image: url("../assets/banner-bg-mine.webp");
-  /* background-image: url("../assets/banner-mine.png"); */
-  /* background-image: url("../assets/mine.png"); */
+ 
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index: 1;
-}
+} */
 
 .banner-content {
   position: relative;
@@ -180,13 +186,22 @@ button {
   font-weight: 800;
   line-height: 1.1;
   display: block;
-  color: #efff3c;
+  /* color: #efff3c; */
   animation: slideUp 1s ease;
 }
 
 .banner-content h1 span {
   /* color: #09bc8a; */
-  color:#ff1654;
+  background: linear-gradient(
+    90deg,
+    #3a86ff,
+    #00f5a0,
+    #efff3c,
+    #ff4d6d,
+    #3a86ff
+  );
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .banner-content p {
@@ -438,34 +453,9 @@ button {
    ========================================================================== */
 .project-section {
   padding: 110px 0;
-  background: #071120;
+  background: url("../assets/project-bg.png");
   position: relative;
   overflow: hidden;
-}
-
-/* Decorative dots */
-.project-section::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 240px;
-  height: 240px;
-  background-image: radial-gradient(#3b82f6 1.5px, transparent 1.5px);
-  background-size: 18px 18px;
-  opacity: .35;
-}
-
-.project-section::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 240px;
-  height: 240px;
-  background-image: radial-gradient(#ff1654 1.5px, transparent 1.5px);
-  background-size: 18px 18px;
-  opacity: .35;
 }
 
 .project-header {
@@ -714,13 +704,13 @@ transform:
    ========================================================================== */
 .review-section {
   padding: 120px 0;
-  background: #071120;
+background:url("../assets/project-bg.png");
   position: relative;
   overflow: hidden;
 }
 
 /* Decorative background shapes */
-.review-section::before {
+/* .review-section::before {
   content: "";
   position: absolute;
   left: -180px;
@@ -744,7 +734,7 @@ transform:
   background: #064e3b;
   opacity: .28;
   border: 3px solid #10b981;
-}
+} */
 
 .review-header {
   text-align: center;
@@ -964,14 +954,18 @@ transform:
   }
 }
 
+
 /* Tablets (Max 992px) */
 @media (max-width: 992px) {
   .banner {
+    background-size: cover;
+    background-position: right;
     padding: 80px 6%;
     min-height: auto;
   }
   .banner-content {
-    max-width: 100%;
+    max-width: 70%;
+
   }
   .banner-content h1 {
     font-size: clamp(2.5rem, 7vw, 4rem);
@@ -1002,20 +996,27 @@ transform:
     display: none;
   }
 }
+@media (max-width: 826px) 
+{
+    .banner-content {
 
+    max-width: 60%;
+  }
+}
 /* Tablets & Mobile (Max 768px) */
 @media (max-width: 768px) {
   .banner {
-    text-align: center;
-    justify-content: center;
+    
+    text-align: bottom;
+    justify-content: left;
     padding: 90px 20px;
   }
   .banner::before {
     background: rgba(29, 53, 87, 0.82);
   }
   .banner-content {
-    align-items: center;
-    max-width: 100%;
+    align-items: left;
+    max-width: 70%;
   }
   .banner-content h1 {
     font-size: clamp(2rem, 8vw, 3.5rem);
@@ -1101,13 +1102,14 @@ transform:
     font-size: 42px;
   }
 }
-
+@media (max-width: 579px) {}
 /* Large Phones (Max 576px) */
 @media (max-width: 576px) {
   .container {
     width: 95%;
   }
   .banner {
+    background-position: center right ;
     padding: 80px 16px;
   }
   .banner-content h5 {
@@ -1167,6 +1169,7 @@ transform:
 /* Medium Phones / iPhone SE (Max 375px) */
 @media (max-width: 375px) {
   .banner {
+    background-position: right;
     padding: 70px 12px;
   }
   .banner-content h1 {

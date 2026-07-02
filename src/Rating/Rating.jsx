@@ -43,8 +43,8 @@ export default function Rating() {
   return (
     <>
       <section className="rating-sec">
-        <div className="dots-left"></div>
-        <div className="dots-right"></div>
+        {/* <div className="dots-left"></div>
+        <div className="dots-right"></div> */}
 
         <form onSubmit={handleSubmit}>
           {/* Header */}

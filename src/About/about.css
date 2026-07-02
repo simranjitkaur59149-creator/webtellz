@@ -440,6 +440,17 @@ line-height:1.5;
    ABOUT CONTENT
    ========================================================================== */
 
+   .section-tag{
+    display:inline-block;
+    padding:8px 20px;
+    border-radius:30px;
+    border:1px solid rgba(0,245,160,.3);
+    color:#00F5A0;
+    margin-bottom:20px;
+    letter-spacing:1px;
+    font-size:14px;
+}
+
 .about-tagline {
   position: relative;
   z-index: 2;
@@ -450,7 +461,7 @@ line-height:1.5;
   line-height: 1.08;
   font-weight: 900;
   color: #ffffff;
-  letter-spacing: -2px;
+  letter-spacing: 1px;
   margin-bottom: 25px;
 }
 
@@ -502,7 +513,7 @@ line-height:1.5;
   font-size: 18px;
   line-height: 1.9;
 
-  color: #bdbdbd;
+
 }
 
 /* ==========================================================================
@@ -694,7 +705,7 @@ margin-top:100px;
 
 display:grid;
 
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(3,1fr);
 
 gap:25px;
 
@@ -739,14 +750,14 @@ left:0;
 
 width:100%;
 height:4px;
-
-background:
+background-color: #ff1654;
+/* background:
 
 linear-gradient(
 90deg,
 #3a86ff,
 #00f5a0,
-#efff3c);
+#efff3c); */
 
 }
 
@@ -812,13 +823,13 @@ font-size:52px;
 font-weight:900;
 
 line-height:1;
-
-background:
+background-color: #ff1654;
+/* background:
 
 linear-gradient(
 90deg,
 #00f5a0,
-#efff3c);
+#efff3c); */
 
 -webkit-background-clip:text;
 

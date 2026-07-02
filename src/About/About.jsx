@@ -24,26 +24,29 @@ import {
   Users,
 } from "lucide-react";
 import { BiBulb } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import { WiDegrees } from "react-icons/wi";
+import { GiDivergence } from "react-icons/gi";
 const aboutFeatures = [
   {
     icon: <Brush />,
     title: "Creative & Modern Designs",
-    text: "Pixel perfect design for your brand.",
+    text: "Modern, pixel-perfect interfaces that elevate your brand and engage your audience.",
   },
   {
     icon: <Timer />,
     title: "Performance Focused",
-    text: "Pixel perfect design for your brand.",
+    text: "Lightning-fast, optimized websites built for speed, SEO, and user experience.",
   },
   {
     icon: <User />,
     title: "Client-Centric Approach",
-    text: "Pixel perfect design for your brand.",
+    text: "Transparent communication and tailored solutions that prioritize your goals..",
   },
   {
     icon: <BiBulb />,
     title: "Innovative Solutions",
-    text: "Pixel perfect design for your brand.",
+    text: "Creative web solutions that combine design, technology, and strategy to drive growth.",
   },
 ];
 const ABOUT_DATA = {
@@ -51,7 +54,7 @@ const ABOUT_DATA = {
     "At Webtellz, we combine creativity, technology, and strategy to build digital experiences that connect, engage, and convert.",
 
   metrics: [
-    { id: "exp", value: "5+", label: "Years of Experience" },
+    {icon:<GiDivergence/>, id: "exp", value: "5+", label: "Years of Experience" },
 
     { icon: <Users />, id: "team", value: "2+", label: "Team Members" },
     {
@@ -97,16 +100,15 @@ const ImageShowcase = ({ experienceData, imageSrc }) => (
     <div className="about-image-container">
       <img src={imageSrc} alt="Webtellz Team" className="about-main-image" />
     </div>
-   
   </div>
 );
 
 export default function AboutWebtellz() {
   // Safe fallback to empty array if context isn't loaded yet
-
+  const navigate = useNavigate();
   const { description, metrics } = ABOUT_DATA;
-  const experienceMetric = metrics.find((item) => item.id === "exp");
-  const gridMetrics = metrics.filter((item) => item.id !== "exp");
+  // const experienceMetric = metrics.find((item) => item.id === "exp");
+  // const gridMetrics = metrics.filter((item) => item.id !== "exp");
 
   return (
     <>
@@ -138,22 +140,26 @@ export default function AboutWebtellz() {
       <section className="about-section">
         <div className="about-container">
           {/* LEFT */}
-          <div className="about-image-card">
-            <img src={simran} className="about-main-image" />
-           
-          </div>
 
           {/* RIGHT */}
 
           <div className=" about-tagline ">
+            <div className="section-tag">✨ A LITTLE ABOUT US</div>
             <h3>
-              We Turn Ideas Into
-              <span> Meaningful Digital Solutions</span>
+              Passionate About
+              <span>Design & Development</span>
             </h3>
 
-            <p>{description}</p>
+            <p>
+              At Webtellz, we transform ideas into modern digital products that
+              are beautiful, responsive, and built for performance. Every
+              project is crafted with creativity, clean code, and attention to
+              detail. Whether it's a business website, portfolio, landing page,
+              or full-stack application, our goal is simple—deliver exceptional
+              user experiences that help brands grow online.
+            </p>
 
-            <div className="feature-grid">
+            {/* <div className="feature-grid">
               {aboutFeatures.map((item) => (
                 <div className="feature-card">
                   <div className="icon">{item.icon}</div>
@@ -165,24 +171,26 @@ export default function AboutWebtellz() {
                   </div>
                 </div>
               ))}
-            </div>
-
-            {/* <div className="about-buttons">
-
-                <button className="primary-btn">
-                    Explore Work →
-                </button>
-
-                <button className="secondary-btn">
-                    ▶ Watch Story
-                </button>
-
             </div> */}
+
+            <div className="about-buttons">
+              <button className="primary-btn">Share your Experience→</button>
+
+              <button
+                className="secondary-btn"
+                onClick={() => navigate("/contact")}
+              >
+                ▶ Lets Talk
+              </button>
+            </div>
+          </div>
+          <div className="about-image-card">
+            <img src={simran} className="about-main-image" />
           </div>
         </div>
 
         <div className="stats-container">
-          {gridMetrics.map((metric) => (
+          {metrics.map((metric) => (
             <div className="stat-card">
               <div className="stat-card-content">
                 {" "}
@@ -197,6 +205,7 @@ export default function AboutWebtellz() {
           ))}
         </div>
       </section>
+
       <Rating />
     </>
   );

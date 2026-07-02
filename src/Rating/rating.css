@@ -5,7 +5,8 @@
     display:flex;
     justify-content:center;
     overflow:hidden;
-background-color: black;
+background:url("../assets/rating-bg.png");
+background-size: cover;
     /* background:
     radial-gradient(circle at top right,#1d3fff22 0%,transparent 28%),
     radial-gradient(circle at bottom left,#ff2e6322 0%,transparent 25%),

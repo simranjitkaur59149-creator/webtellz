@@ -139,8 +139,7 @@ const serviceFeatures = [
 const roles = [
   "Full-Stack Mern Developer",
   "UI/UX Enthusiast",
-  "React developer",
-  "Web developer",
+ 
 ];
 
 export default function Home() {
@@ -241,7 +240,7 @@ export default function Home() {
         <div className="banner-content">
           <h5>{displayText}</h5>
           <h1>
-            Creative Web <span>Solutions</span>
+            Simranjit kaur <span>Full stack developer</span>
           </h1>
           <p>
             WebTellz creates modern websites, intuitive UI/UX, and SEO-driven
